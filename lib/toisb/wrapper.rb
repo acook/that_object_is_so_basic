@@ -50,6 +50,7 @@ module TOISB; class Wrapper
 
   # This is here so you can pass in an arbitrary object
   def safe_send_to target, method, *args, &block
+    raise NotImplementedError, "Bind functionality wasn't added until Ruby 2.0." if ::RUBY_VERSION < "2.0.0"
     (Module === target ? Module : Object).instance_method(method).bind(target).call(*args, &block)
   end
 
