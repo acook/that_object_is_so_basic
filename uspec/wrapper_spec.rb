@@ -16,11 +16,12 @@ spec "can get the singleton class of a BasicObject subclass" do
   actual.include?(expected) || actual
 end
 
+# FIXME: Is it possible to get this to work on 2.0-2.2?
 spec "can send common Object methods safely to a BasicObject subclass" do
   expected = "#<TestObject:"
   actual = toisb.safe_send :to_s
   actual.include?(expected) || actual
-end
+end unless RUBY_VERSION < "2.3.0"
 
 spec "can get the class of a BasicObject" do
   expected = "TestObject"
