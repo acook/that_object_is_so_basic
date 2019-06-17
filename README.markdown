@@ -11,7 +11,7 @@ Install the gem like `gem install that_object_is_so_basic` then use it like this
 ~~~ruby
 require "toisb"
 
-# This gem was originally extracted from the Impasta and Uspec gems
+# TOISB was originally extracted from the Impasta and Uspec gems
 class Impasta < BasicObject; end
 spy = Impasta.new
 
