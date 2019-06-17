@@ -1,8 +1,4 @@
-require_relative "helper"
-
 module TOISB; class Wrapper
-  include Helper
-
   def initialize object, trace = nil
     @object = object
     @trace = caller
