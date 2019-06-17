@@ -1,6 +1,11 @@
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "toisb/version"
+
 Gem::Specification.new do |gem|
   gem.name        = "that_object_is_so_basic"
-  gem.version     = "0.0.1"
+  gem.version     = TOISB::VERSION
   gem.summary     = "That Object is So Basic (TOISB) is a BasicObject handler."
   gem.description = "TOISB provides a wrapper class and a helper module for dealing with BasicObjects in style!"
   gem.authors     = ["Anthony M. Cook"]
