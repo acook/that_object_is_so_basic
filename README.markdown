@@ -3,6 +3,10 @@ That Object is So Basic!
 
 TOISB lets you play with BasicObject and other weird objects in Ruby in style and without breaking (as many) things.
 
+[![Gem](https://img.shields.io/gem/v/that_object_is_so_basic.svg?style=for-the-badge)](https://rubygems.org/gems/that_object_is_so_basic)
+[![Travis (.org)](https://img.shields.io/travis/acook/that_object_is_so_basic.svg?style=for-the-badge)](https://travis-ci.org/acook/that_object_is_so_basic)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/acook/that_object_is_so_basic.svg?style=for-the-badge)](https://codeclimate.com/github/acook/that_object_is_so_basic)
+
 Usage
 -----
 
