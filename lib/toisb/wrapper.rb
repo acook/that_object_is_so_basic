@@ -20,7 +20,7 @@ module TOISB; class Wrapper
 
   # Collects the ancestors of an object
   def ancestors
-    @ancestors ||= safe_send_to singleton, :ancestors
+    @ancestors ||= singleton.ancestors
   end
 
   # Collects only the ancestors which are Classes
@@ -30,12 +30,12 @@ module TOISB; class Wrapper
 
   # Returns the class of the object if it isn't already a class
   def klass
-    @klass ||= Module === object ? object : ancestor_klasses[1]
+    @klass ||= singleton.superclass
   end
 
   # Returns the superclass of the object
   def superklass
-    ancestor_klasses[2]
+    klass.superclass
   end
 
   # Gets the object ID of an object
