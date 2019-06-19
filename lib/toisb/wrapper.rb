@@ -7,10 +7,19 @@ module TOISB; class Wrapper
 
   # Checks for an inspect method and falls back to Superclass/Class:ID
   def inspector
-    fallback = "#<#{superklass}/#{klass}:0x#{get_id}>"
-    klass && klass.public_method_defined?(:inspect) ? object.inspect : fallback
+    inspector!
   rescue
-    fallback
+    simple_inspector
+  end
+
+  # This version doesn't rescue when #inspect raises
+  def inspector!
+    klass && klass.public_method_defined?(:inspect) ? object.inspect : simple_inspector
+  end
+
+  # Simple inspect-ish output with a low chance of failure
+  def simple_inspector
+    "#<#{superklass}/#{klass}:0x#{get_id}>"
   end
 
   # Obtain the singleton class of an object

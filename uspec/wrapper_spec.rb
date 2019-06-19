@@ -47,3 +47,15 @@ spec "can get the ancestors of a BasicObject subclass" do
   actual.size == expected || actual
 end
 
+spec "#inspector! doesn't mask exceptions if the associated inspect method fails" do
+  class ::FailingInspectObject < BasicObject
+     def inspect; ::Kernel.raise ::NotImplementedError, "This is supposed to fail"; end;
+  end
+  inspect_fail = TOISB.wrap ::FailingInspectObject.new
+
+  begin
+    inspect_fail.inspector!
+  rescue NotImplementedError => error
+    error.message.include?("supposed to fail") || error
+  end
+end
