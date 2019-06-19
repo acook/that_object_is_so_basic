@@ -19,7 +19,19 @@ module TOISB; class Wrapper
 
   # Simple inspect-ish output with a low chance of failure
   def simple_inspector
-    "#<#{superklass}/#{klass}:0x#{get_id}>"
+    "#<#{klassinfo}:0x#{get_id}>"
+  end
+
+  # show a nicely formated version of the class and its superclass
+  # displays it in the style of a path, with the superclass as the parent directory
+  def klassinfo
+    [superklass, klass].compact.join "/"
+  end
+
+  # show a nicely formated version of the class and its superclass
+  # displays it in the same style as the class definition
+  def subklassinfo
+    [klass, superklass].compact.join " < "
   end
 
   # Obtain the singleton class of an object

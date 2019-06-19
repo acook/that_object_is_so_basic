@@ -4,6 +4,8 @@ class ::TestObject < BasicObject; end
 obj = ::TestObject.new
 toisb = TOISB.wrap obj
 
+bowrap = TOISB.wrap BasicObject.new
+
 spec "can inspect BasicObject subclasses" do
   expected = "BasicObject/TestObject"
   actual = toisb.inspector
@@ -37,7 +39,7 @@ end
 
 spec "can get the superclass (nil) of a BasicObject" do
   expected = nil
-  actual = TOISB.wrap(BasicObject.new).superklass
+  actual = bowrap.superklass
   actual == expected || actual
 end
 
@@ -58,4 +60,28 @@ spec "#inspector! doesn't mask exceptions if the associated inspect method fails
   rescue NotImplementedError => error
     error.message.include?("supposed to fail") || error
   end
+end
+
+spec "generates correct klassinfo for BasicObject" do
+  expected = "BasicObject"
+  actual = bowrap.klassinfo
+  actual == expected || actual
+end
+
+spec "generates correct subklassinfo for BasicObject" do
+  expected = "BasicObject"
+  actual = bowrap.subklassinfo
+  actual == expected || actual
+end
+
+spec "generates correct klassinfo for BasicObject subclasses" do
+  expected = "BasicObject/TestObject"
+  actual = toisb.klassinfo
+  actual == expected || actual
+end
+
+spec "generates correct subklassinfo for BasicObject subclasses" do
+  expected = "TestObject < BasicObject"
+  actual = toisb.subklassinfo
+  actual == expected || actual
 end
