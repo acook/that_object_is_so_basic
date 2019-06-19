@@ -6,6 +6,8 @@ toisb = TOISB.wrap obj
 
 bowrap = TOISB.wrap BasicObject.new
 arraywrap = TOISB.wrap(Array)
+anonwrap = TOISB.wrap(Class.new Class.new)
+modwrap = TOISB.wrap(Module.new)
 
 spec "can inspect BasicObject subclasses" do
   expected = "BasicObject/TestObject"
@@ -96,5 +98,29 @@ end
 spec "generates correct subklassinfo for classes like Array" do
   expected = "Class < Module"
   actual = arraywrap.subklassinfo
+  actual == expected || actual
+end
+
+spec "generates correct klassinfo for anonymous classes" do
+  expected = "Module/Class"
+  actual = anonwrap.klassinfo
+  actual == expected || actual
+end
+
+spec "generates correct subklassinfo for anonymous classes" do
+  expected = "Class < Module"
+  actual = anonwrap.subklassinfo
+  actual == expected || actual
+end
+
+spec "generates correct klassinfo for anonymous modules" do
+  expected = "Object/Module"
+  actual = modwrap.klassinfo
+  actual == expected || actual
+end
+
+spec "generates correct subklassinfo for anonymous modules" do
+  expected = "Module < Object"
+  actual = modwrap.subklassinfo
   actual == expected || actual
 end
