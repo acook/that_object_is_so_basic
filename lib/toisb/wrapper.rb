@@ -49,7 +49,7 @@ module TOISB; class Wrapper
     @ancestor_klasses ||= ancestors.select {|a| Class === a && !a.singleton_class? }
   end
 
-  # Returns the class of the object if it isn't already a class
+  # Returns the class of the object
   def klass
     @klass ||= ancestor_klasses[0]
   end
