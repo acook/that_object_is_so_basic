@@ -25,7 +25,7 @@ module TOISB; class Wrapper
   # show a nicely formated version of the class and its superclass
   # displays it in the style of a path, with the superclass as the parent directory
   def klassinfo
-    [superklass, klass].compact.join "/"
+    [superklass, klass].compact.map(&:name).join "/"
   end
 
   # show a nicely formated version of the class and its superclass
@@ -44,19 +44,19 @@ module TOISB; class Wrapper
     @ancestors ||= singleton.ancestors
   end
 
-  # Collects only the ancestors which are Classes
+  # Collects only the ancestors which are Classes and not Modules or singleton classes
   def ancestor_klasses
-    @ancestor_klasses ||= ancestors.select {|a| Class === a }
+    @ancestor_klasses ||= ancestors.select {|a| Class === a && !a.singleton_class? }
   end
 
   # Returns the class of the object if it isn't already a class
   def klass
-    @klass ||= singleton.superclass
+    @klass ||= ancestor_klasses[0]
   end
 
   # Returns the superclass of the object
   def superklass
-    klass.superclass
+    @superklass ||= ancestor_klasses[1]
   end
 
   # Gets the object ID of an object

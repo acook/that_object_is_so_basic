@@ -5,6 +5,7 @@ obj = ::TestObject.new
 toisb = TOISB.wrap obj
 
 bowrap = TOISB.wrap BasicObject.new
+arraywrap = TOISB.wrap(Array)
 
 spec "can inspect BasicObject subclasses" do
   expected = "BasicObject/TestObject"
@@ -83,5 +84,17 @@ end
 spec "generates correct subklassinfo for BasicObject subclasses" do
   expected = "TestObject < BasicObject"
   actual = toisb.subklassinfo
+  actual == expected || actual
+end
+
+spec "generates correct klassinfo for classes like Array" do
+  expected = "Module/Class"
+  actual = arraywrap.klassinfo
+  actual == expected || actual
+end
+
+spec "generates correct subklassinfo for classes like Array" do
+  expected = "Class < Module"
+  actual = arraywrap.subklassinfo
   actual == expected || actual
 end
