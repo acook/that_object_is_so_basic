@@ -49,8 +49,8 @@ Style/StringLiteralsInInterpolation:
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-Style/EnforcedStyleForMultiline:
-  EnforcedStyle: consistent_comma
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
 
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
