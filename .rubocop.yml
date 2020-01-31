@@ -1,7 +1,7 @@
 # Rubocop override settings
 
 AllCops:
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.5
 
 Metrics/LineLength:
   Max: 120
