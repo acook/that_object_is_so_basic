@@ -18,7 +18,7 @@ end
 
 spec "other values passed as trace and @trace will equal it" do
   expected = "foo"
-  toisb = TOISB.wrap obj, arg
+  toisb = TOISB.wrap obj, expected
   actual = toisb.instance_variable_get :@trace
   (actual == expected) || actual
 end
