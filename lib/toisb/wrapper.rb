@@ -1,7 +1,7 @@
 module TOISB; class Wrapper
   def initialize object, trace = nil
     @object = object
-    @trace = caller
+    @trace = trace || caller
   end
   attr_reader :object, :trace
 
