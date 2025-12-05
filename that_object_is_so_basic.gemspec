@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.authors     = ["Anthony M. Cook"]
   gem.email       = "github@anthonymcook.com"
   gem.files       = `git ls-files -z`.split(?\x0)
-  gem.homepage    = "https://github.com/acook/that_object_is_so_basic"
+  gem.homepage    = "https://codeberg.org/acook/that_object_is_so_basic"
   gem.license     = "Apache-2.0"
 
   gem.required_ruby_version = ">= 2.1"
